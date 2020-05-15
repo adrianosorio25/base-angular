@@ -1,0 +1,47 @@
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="3%">
+    <mat-card fxFlex="40">
+        <mat-card-header>
+            <mat-card-title>Perfil Del Usuario</mat-card-title>
+            <mat-card-subtitle>configurar usuario</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form #f="ngForm" (ngSubmit)="guardar(f.value)">
+                <mat-form-field>
+                    <mat-label>Nombre</mat-label>
+                    <input [ngModel]="usuario.nombre" name="nombre" matInput>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Correo</mat-label>
+                    <input [disabled]="usuario.google" [ngModel]="usuario.email" name="email" matInput>
+                </mat-form-field>
+                <br>
+                <button type="submit" mat-raised-button color="primary">
+            <mat-icon>save</mat-icon>
+            Actualizar
+        </button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="40">
+        <mat-card-header>
+            <mat-card-title>Perfil Del Usuario</mat-card-title>
+            <mat-card-subtitle>configurar usuario</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <img class="avatar" *ngIf="!imagenTempotal" [src]="usuario.img | imagen" />
+            <img class="avatar" *ngIf="imagenTempotal" [src]="imagenTempotal" />
+            <br>
+            <mat-form-field>
+                <ngx-mat-file-input (change)="seleccionImagen($event.target.files[0])" type="file" placeholder="Seleccione una imagen"></ngx-mat-file-input>
+                <mat-icon matSuffix color="primary" style="cursor: pointer;">attach_file</mat-icon>
+            </mat-form-field>
+            <br>
+            <button (click)="cambiarImagen()" [disabled]="!imagenSubir" type="button" mat-button mat-raised-button color="primary">
+                <mat-icon mat-icon-button>save</mat-icon>
+                Actualizar Foto
+            </button>
+        </mat-card-content>
+    </mat-card>
+</div>

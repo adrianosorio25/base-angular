@@ -1,0 +1,32 @@
+mat-chip {
+    font-size: 10px;
+    min-height: 17px;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.avatar {
+    width: 50px;
+    border-radius: 50%;
+    padding-top: 5px;
+}
+
+td,
+th {
+    width: auto;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}

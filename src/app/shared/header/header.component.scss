@@ -1,0 +1,23 @@
+.toolbar-button {
+    &.mat-button,
+    &.mat-icon-button {
+        margin: 0 4px;
+    }
+    &.mat-button {
+        min-width: unset;
+        line-height: 40px;
+        border-radius: 999px;
+    }
+    &.avatar-button {
+        display: block;
+        padding: 0 4px;
+        font-size: 0;
+        .avatar {
+            border-radius: 999px;
+        }
+        .username {
+            margin: 0 8px;
+            font-size: 14px;
+        }
+    }
+}

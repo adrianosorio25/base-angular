@@ -1,0 +1,19 @@
+<mat-toolbar>
+    <button mat-icon-button (click)="toggleSideBar()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span fxFlex></span>
+
+    <mat-form-field style="font-size: 13.5px; color: gray">
+        <mat-label>
+            <mat-icon>search</mat-icon>Buscar</mat-label>
+        <input matInput #input (keyup.enter)="buscar(input.value)">
+    </mat-form-field>
+
+    <button mat-icon-button class="matero-toolbar-button" fxHide.lt-sm (click)="toggleFullscreen()">
+    <mat-icon>fullscreen</mat-icon>
+  </button>
+
+    <app-user></app-user>
+
+</mat-toolbar>

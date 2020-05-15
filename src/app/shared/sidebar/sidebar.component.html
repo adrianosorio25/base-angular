@@ -1,0 +1,46 @@
+<mat-sidenav-container class="navbar-sidenav-container">
+    <mat-nav-list style="background: white; padding-top: 0px;">
+
+        <!-- <app-user-panel></app-user-panel> -->
+
+        <!-- menu estatico -->
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header *ngFor="let home of _sidebar.home">
+                    <mat-panel-title>
+                        {{home.titulo}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list *ngFor="let home of _sidebar.home">
+                    <a *ngFor="let submenu of home.submenu" mat-list-item [routerLink]="[ submenu.url ]" routerLinkActive="active">
+                        <mat-icon mat-list-icon>
+                            {{ submenu.icon }}
+                        </mat-icon>
+                        <p mat-line> {{ submenu.titulo }} </p>
+                    </a>
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- menu dinamico backend -->
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header *ngFor="let menu of _sidebar.menu">
+                    <mat-panel-title>
+                        {{menu.titulo}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list *ngFor="let menu of _sidebar.menu">
+                    <a *ngFor="let submenu of menu.submenu" mat-list-item [routerLink]="[ submenu.url ]" routerLinkActive="active">
+                        <mat-icon mat-list-icon>
+                            {{ submenu.icon }}
+                        </mat-icon>
+                        <p mat-line> {{ submenu.titulo }} </p>
+                    </a>
+                </mat-nav-list>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </mat-nav-list>
+</mat-sidenav-container>

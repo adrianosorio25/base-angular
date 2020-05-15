@@ -1,0 +1,56 @@
+<div class="container">
+    <mat-card>
+        <!-- logo -->
+        <mat-card-header>
+            <img mat-card-image src="../../assets/img/logo.png" alt="logo HappyPets">
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="forma" (ngSubmit)="ingresar()">
+
+                <!-- correo -->
+                <mat-form-field>
+                    <mat-label>Correo</mat-label>
+                    <input type="email" formControlName="email" name="email" matInput [errorStateMatcher]="matcher" placeholder="Ejemplo. pat@ejemplo.com">
+                    <mat-error *ngIf="!this.forma.hasError('email')">
+                        Por favor ingrese un correo valido
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- contraseña -->
+                <mat-form-field>
+                    <mat-label>Contraseña</mat-label>
+                    <input formControlName="password" name="password" matInput [type]="hide ? 'password' : 'text'">
+                    <mat-error *ngIf="!this.forma.hasError('required')">
+                        Por favor ingrese una contraseña
+                    </mat-error>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                </mat-form-field>
+                <br>
+
+                <!-- recuerdame -->
+                <div>
+                    <section>
+                        <mat-checkbox formControlName="recuerdame" name="recuerdame">Recuerdame</mat-checkbox>
+                    </section>
+                </div>
+                <br>
+
+                <!-- boton ingresar -->
+                <div>
+                    <button [disabled]="forma.invalid" type="submit" class="btn" mat-raised-button color="primary">Ingresar</button>
+                </div>
+                <br>
+
+                <!-- boton google -->
+                <div>
+                    <button type="button" class="btnGoogle" id="btnGooglePlus" mat-raised-button color="warn"><i class="fab fa-google"></i></button>
+                </div>
+                <br>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

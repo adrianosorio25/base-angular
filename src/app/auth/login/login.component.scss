@@ -1,0 +1,45 @@
+mat-card {
+    float: right;
+    height: 100%;
+    padding: 0 16px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.container {
+    background-image: url('/assets/img/fondologin.jpg');
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    padding: 0%;
+}
+
+img {
+    width: 40%;
+    display: block;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.create,
+a {
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn,
+.btnGoogle {
+    font-size: .8rem;
+    border-radius: 60px;
+    cursor: pointer;
+    margin: auto;
+    width: 80%;
+    display: block;
+}
+
+.btnGoogle {
+    width: 20%;
+}

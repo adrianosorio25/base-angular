@@ -1,0 +1,67 @@
+<mat-card-header class="header">
+    <mat-card-title class="header">Crear </mat-card-title><br>
+    <mat-card-subtitle class="header"> Cliente</mat-card-subtitle>
+</mat-card-header>
+
+
+<form [formGroup]="forma" (ngSubmit)="registrarUsuario()">
+    <div>
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input formControlName="nombre" name="nombre" matInput placeholder="Ingrese Nombre">
+            <mat-error *ngIf="!this.forma.hasError('required')">
+                Por favor ingrese un nombre
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <mat-label>Correo</mat-label>
+        <input formControlName="correo" name="correo" matInput [errorStateMatcher]="matcher" placeholder="Ejemplo. pat@ejemplo.com">
+        <mat-error *ngIf="!this.forma.hasError('email')">
+            Por favor ingrese un correo valido
+        </mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+        <mat-label>ROL</mat-label>
+        <mat-select formControlName="role" name="role">
+            <mat-option value="ADMIN_ROLE">ADMIN_ROLE</mat-option>
+            <mat-option value="USER_ROLE">USER_ROLE</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input formControlName="password" name="password" matInput [type]="hide ? 'password' : 'text'">
+        <mat-error *ngIf="!this.forma.hasError('required')">
+            Por favor ingrese una contraseña
+        </mat-error>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+    </mat-form-field>
+    <div>
+        <mat-form-field>
+            <mat-label>Confirmar Contraseña</mat-label>
+            <input formControlName="password2" name="password2" matInput [type]="hide2 ? 'password' : 'text'">
+            <mat-error *ngIf="!this.forma.hasError('required')">
+                Por favor ingrese una contraseña
+            </mat-error>
+            <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group" *ngIf="forma.errors?.sonIguales && !forma.pristine">
+        <p class="text-danger">Las contraseñas deben ser iguales</p>
+    </div>
+
+    <div>
+        <button [disabled]="forma.invalid" type="submit" class="btn" mat-dialog-close mat-raised-button color="primary"><mat-icon>save</mat-icon> Crear Usuario</button>
+    </div>
+    <br>
+</form>
