@@ -27,6 +27,30 @@ th {
     width: auto;
 }
 
-th.mat-sort-header-sorted {
-    color: black;
+.text {
+    color: rgba(0, 0, 0, .54);
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 13px;
+    float: right;
+    margin-top: 18px;
+    margin-right: 10px;
+}
+
+.icon,
+.iconRight {
+    float: right;
+    font-size: 32px;
+    margin-top: 11.5px;
+    margin-right: 10px;
+    color: rgba(0, 0, 0, 0.582);
+}
+
+.iconRight {
+    margin-right: 30px;
+}
+
+.paginator {
+    width: 100%;
+    height: 50px;
+    display: inline-block;
 }

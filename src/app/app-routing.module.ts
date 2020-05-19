@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from '@auth/login/login.component';
 import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component';
 import { PagesComponent } from './pages/pages.component';
+import { LoginGuard } from './services/guards/login.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -13,7 +14,7 @@ const routes: Routes = [
     path: '',
     component: PagesComponent,
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
-    // canLoad: [authg]
+    canActivate: [ LoginGuard ]
   },
   { path: '**', component: NopagefoundComponent }
 ];

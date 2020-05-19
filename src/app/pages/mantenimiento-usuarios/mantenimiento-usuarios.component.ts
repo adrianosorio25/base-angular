@@ -20,8 +20,9 @@ export class MantenimientoUsuariosComponent implements OnInit {
 
   displayedColumns: string[] = ['imagen', 'email', 'nombre', 'role', 'auth', 'icono1', 'icono2'];
 
-  constructor(public _usuarioService: UsuarioService,
-              public dialog: MatDialog) {}
+  constructor(private _usuarioService: UsuarioService,
+              private dialog: MatDialog) {
+              }
 
   ngOnInit(): void {
     this.cargarUsuarios();

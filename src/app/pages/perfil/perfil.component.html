@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="3%">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="3%">
     <mat-card fxFlex="40">
         <mat-card-header>
             <mat-card-title>Perfil Del Usuario</mat-card-title>
@@ -8,18 +8,18 @@
             <form #f="ngForm" (ngSubmit)="guardar(f.value)">
                 <mat-form-field>
                     <mat-label>Nombre</mat-label>
-                    <input [ngModel]="usuario.nombre" name="nombre" matInput>
+                    <input [ngModel]="usuario.nombre" name="nombre" matInput required>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                     <mat-label>Correo</mat-label>
-                    <input [disabled]="usuario.google" [ngModel]="usuario.email" name="email" matInput>
+                    <input [disabled]="usuario.google" [ngModel]="usuario.email" name="email" matInput required>
                 </mat-form-field>
                 <br>
-                <button type="submit" mat-raised-button color="primary">
-            <mat-icon>save</mat-icon>
-            Actualizar
-        </button>
+                <button [disabled]="f.invalid" type="submit" mat-raised-button color="primary">
+                <mat-icon>save</mat-icon>
+                Actualizar
+                </button>
             </form>
         </mat-card-content>
     </mat-card>
@@ -29,9 +29,9 @@
             <mat-card-title>Perfil Del Usuario</mat-card-title>
             <mat-card-subtitle>configurar usuario</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content>
-            <img class="avatar" *ngIf="!imagenTempotal" [src]="usuario.img | imagen" />
-            <img class="avatar" *ngIf="imagenTempotal" [src]="imagenTempotal" />
+        <mat-card-content fxLayout.xs="column">
+            <img fxLayoutAlign="center" class="avatar" *ngIf="!imagenTempotal" [src]="usuario.img | imagen" />
+            <img fxLayoutAlign="center" class="avatar" *ngIf="imagenTempotal" [src]="imagenTempotal" />
             <br>
             <mat-form-field>
                 <ngx-mat-file-input (change)="seleccionImagen($event.target.files[0])" type="file" placeholder="Seleccione una imagen"></ngx-mat-file-input>

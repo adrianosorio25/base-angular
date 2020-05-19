@@ -4,7 +4,7 @@
     </button>
     <span fxFlex></span>
 
-    <mat-form-field style="font-size: 13.5px; color: gray">
+    <mat-form-field *ngIf="admin" style="font-size: 13.5px;">
         <mat-label>
             <mat-icon>search</mat-icon>Buscar</mat-label>
         <input matInput #input (keyup.enter)="buscar(input.value)">

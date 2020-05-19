@@ -10,11 +10,11 @@
 <br><br>
 
 <div class="mat-elevation-z8">
-    <table mat-table #table [dataSource]="usuarios" matSort>
+    <table mat-table #table [dataSource]="usuarios">
 
         <!-- Imagen Column -->
         <ng-container matColumnDef="imagen">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Imagen </th>
+            <th mat-header-cell *matHeaderCellDef> Imagen </th>
             <td style="width: 70px; cursor: pointer;" mat-cell *matCellDef="let usuario">
                 <img [src]="usuario.img | imagen" class="avatar">
             </td>
@@ -22,19 +22,19 @@
 
         <!-- Correo Column -->
         <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
+            <th mat-header-cell *matHeaderCellDef> Correo </th>
             <td mat-cell *matCellDef="let usuario"> {{usuario.email}} </td>
         </ng-container>
 
         <!-- Nombre Column -->
         <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
             <td mat-cell *matCellDef="let usuario"> {{usuario.nombre}} </td>
         </ng-container>
 
         <!-- Rol Column -->
         <ng-container matColumnDef="role">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol </th>
+            <th mat-header-cell *matHeaderCellDef> Rol </th>
             <td mat-cell *matCellDef="let usuario">
                 <mat-form-field style="width: 110px;">
                     <mat-select [(ngModel)]="usuario.role" name="role">
@@ -47,7 +47,7 @@
 
         <!-- Auth Column -->
         <ng-container matColumnDef="auth">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Auth </th>
+            <th mat-header-cell *matHeaderCellDef> Auth </th>
             <td mat-cell *matCellDef="let usuario">
                 <mat-chip-list>
                     <mat-chip *ngIf="usuario.google" color="warn" selected>Google</mat-chip>
@@ -58,7 +58,7 @@
 
         <!-- Icono1 Column -->
         <ng-container matColumnDef="icono1">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+            <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let usuario">
                 <mat-icon color="primary" (click)="actualizarUsuario(usuario)">save</mat-icon>
             </td>
@@ -66,7 +66,7 @@
 
         <!-- Icono2 Column -->
         <ng-container matColumnDef="icono2">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+            <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let usuario">
                 <mat-icon color="warn" (click)="borrarUsuario(usuario)">delete_outline</mat-icon>
             </td>
@@ -76,6 +76,13 @@
         <tr mat-row *matRowDef="let usuario; columns: displayedColumns;">
         </tr>
     </table>
-    <mat-icon (click)="cambiarDesde(-5)">navigate_before</mat-icon>
-    <mat-icon (click)="cambiarDesde(+5)">navigate_next</mat-icon>
+
+    <div class="paginator">
+        <mat-icon (click)="cambiarDesde(+5)" class="iconRight">keyboard_arrow_right</mat-icon>
+        <mat-icon (click)="cambiarDesde(-5)" class="icon">keyboard_arrow_left</mat-icon>
+        <div class="text">
+            {{desde + 1}} - {{usuarios.length + desde}} de {{totalRegistros}}
+        </div>
+    </div>
+
 </div>

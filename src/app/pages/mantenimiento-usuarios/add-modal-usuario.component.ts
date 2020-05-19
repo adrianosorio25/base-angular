@@ -40,7 +40,7 @@ export class AddModalUsuarioComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(public _usuarioService: UsuarioService) { }
+  constructor(private _usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.forma = new FormGroup({
@@ -75,9 +75,6 @@ export class AddModalUsuarioComponent implements OnInit {
     if ( this.forma.invalid ) {
       return;
     }
-
-    console.log('Forma Valida', this.forma.valid );
-    console.log( this.forma.value );
 
     const usuario  = new Usuario(
       this.forma.value.nombre,
