@@ -15,7 +15,7 @@
         <!-- Imagen Column -->
         <ng-container matColumnDef="imagen">
             <th mat-header-cell *matHeaderCellDef> Imagen </th>
-            <td style="width: 70px; cursor: pointer;" mat-cell *matCellDef="let usuario">
+            <td style="width: 70px;" mat-cell *matCellDef="let usuario">
                 <img [src]="usuario.img | imagen" class="avatar">
             </td>
         </ng-container>
@@ -51,7 +51,7 @@
             <td mat-cell *matCellDef="let usuario">
                 <mat-chip-list>
                     <mat-chip *ngIf="usuario.google" color="warn" selected>Google</mat-chip>
-                    <mat-chip *ngIf="!usuario.google" color="primary" selected>Normal</mat-chip>
+                    <mat-chip *ngIf="!usuario.google" color="accent" selected>Normal</mat-chip>
                 </mat-chip-list>
             </td>
         </ng-container>
@@ -60,7 +60,7 @@
         <ng-container matColumnDef="icono1">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let usuario">
-                <mat-icon color="primary" (click)="actualizarUsuario(usuario)">save</mat-icon>
+                <mat-icon color="accent" (click)="actualizarUsuario(usuario)">save</mat-icon>
             </td>
         </ng-container>
 
@@ -78,8 +78,8 @@
     </table>
 
     <div class="paginator">
-        <mat-icon (click)="cambiarDesde(+5)" class="iconRight">keyboard_arrow_right</mat-icon>
-        <mat-icon (click)="cambiarDesde(-5)" class="icon">keyboard_arrow_left</mat-icon>
+        <mat-icon (click)="cambiarDesde(+6)" class="iconRight">keyboard_arrow_right</mat-icon>
+        <mat-icon (click)="cambiarDesde(-6)" class="icon">keyboard_arrow_left</mat-icon>
         <div class="text">
             {{desde + 1}} - {{usuarios.length + desde}} de {{totalRegistros}}
         </div>
