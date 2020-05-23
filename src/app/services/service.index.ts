@@ -1,6 +1,11 @@
 export { SubirArchivoService } from '@services/subirArchivo/subir-archivo.service';
 export { VerificaTokenGuard } from '@services/guards/verifica-token.guard';
+export { ServiciosService } from './servicios/servicios.service';
+export { PersonalService } from './personal/personal.service';
+export { ClientesService } from './clientes/clientes.service';
+export { EspecieService } from './especie/especie.service';
 export { SidebarService } from './sidebar/sidebar.service';
 export { UsuarioService } from '@services/usuario/usuario.service';
+export { RazasService } from './razas/razas.service';
 export { AdminGuard } from '@services/guards/admin.guard';
 export { LoginGuard } from '@services/guards/login.guard';

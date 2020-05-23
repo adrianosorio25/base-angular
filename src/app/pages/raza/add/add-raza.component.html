@@ -1,0 +1,27 @@
+<mat-card-header class="header">
+    <mat-card-title class="header">Crear </mat-card-title><br>
+    <mat-card-subtitle class="header"> Raza</mat-card-subtitle>
+</mat-card-header>
+
+<form [formGroup]="forma" (ngSubmit)="registrarRaza()" fxLayout.xs="row wrap" fxLayout="column">
+
+    <mat-form-field>
+        <mat-label>Nombre Raza</mat-label>
+        <input formControlName="nombre" name="nombre" matInput placeholder="Ingrese Nombre De Raza">
+        <mat-error *ngIf="!this.forma.hasError('required')">
+            Por favor ingrese un nombre de raza
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Especie</mat-label>
+        <mat-select formControlName="especie" name="especie">
+            <mat-option *ngFor="let especie of especies" [value]="especie._id">{{especie.especie}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div>
+        <button [disabled]="forma.invalid" type="submit" class="btn" mat-dialog-close mat-raised-button color="primary"><mat-icon>save</mat-icon> Guardar</button>
+    </div>
+    <br>
+</form>

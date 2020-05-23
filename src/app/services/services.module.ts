@@ -6,8 +6,13 @@ import { CommonModule } from '@angular/common';
 import {
   SubirArchivoService,
   VerificaTokenGuard,
+  ServiciosService,
+  PersonalService,
+  ClientesService,
   UsuarioService,
+  EspecieService,
   SidebarService,
+  RazasService,
   AdminGuard,
   LoginGuard
 } from '@services/service.index';
@@ -17,8 +22,13 @@ import {
   providers: [
     SubirArchivoService,
     VerificaTokenGuard,
+    ServiciosService,
+    PersonalService,
+    ClientesService,
     UsuarioService,
+    EspecieService,
     SidebarService,
+    RazasService,
     AdminGuard,
     LoginGuard
   ],

@@ -1,0 +1,66 @@
+<mat-form-field style="width: 50%">
+    <mat-label>
+        <mat-icon style="width: 25px;">search</mat-icon>Buscar Cliente</mat-label>
+    <input matInput #input (keyup)="buscarCliente(input.value)" #target>
+</mat-form-field>
+
+<button (click)="addCliente()" style="float: right;" mat-fab color="warn">
+    <mat-icon>add</mat-icon>
+</button>
+<br><br>
+
+<div class="mat-elevation-z8">
+    <table mat-table #table [dataSource]="clientes">
+
+        <!-- Nombres Column -->
+        <ng-container matColumnDef="nombres">
+            <th mat-header-cell *matHeaderCellDef width="40%"> Nombre </th>
+            <td mat-cell *matCellDef="let clientes"><strong>{{clientes.nombres | uppercase}} {{clientes.apellidos | uppercase}}</strong></td>
+        </ng-container>
+
+        <!-- Identificacion Column -->
+        <ng-container matColumnDef="identificacion">
+            <th mat-header-cell *matHeaderCellDef width="20%"> Identificación </th>
+            <td mat-cell *matCellDef="let clientes">{{clientes.identificacion}}</td>
+        </ng-container>
+
+        <!-- Correo Column -->
+        <ng-container matColumnDef="contacto">
+            <th class="descipcion" mat-header-cell *matHeaderCellDef width="40%"> Contacto </th>
+            <td class="descipcion" mat-cell *matCellDef="let clientes">
+                <mat-icon style="font-size: 15px;">phone</mat-icon>{{clientes.telefono}}<br>
+                <mat-icon style="font-size: 15px;">email</mat-icon>{{clientes.email}}<br>
+                <mat-icon style="font-size: 15px;">place</mat-icon>{{clientes.direccion}}
+            </td>
+        </ng-container>
+
+        <!-- Icono1 Column -->
+        <ng-container matColumnDef="icono1">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let cliente">
+                <mat-icon color="accent" style="padding-left: 5px;" (click)="editCliente(cliente._id)">edit</mat-icon>
+            </td>
+        </ng-container>
+
+        <!-- Icono2 Column -->
+        <ng-container matColumnDef="icono2">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let cliente">
+                <mat-icon color="warn" style="padding-left: 5px;" (click)="borrarCliente(cliente)">delete_outline</mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let clientes; columns: displayedColumns;">
+        </tr>
+    </table>
+
+    <div class="paginator">
+        <mat-icon (click)="cambiarDesde(+5)" class="iconRight">keyboard_arrow_right</mat-icon>
+        <mat-icon (click)="cambiarDesde(-5)" class="icon">keyboard_arrow_left</mat-icon>
+        <div class="text">
+            {{desde + 1}} - {{clientes.length + desde}} de {{totalRegistros}}
+        </div>
+    </div>
+
+</div>

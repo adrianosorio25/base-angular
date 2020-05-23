@@ -10,7 +10,11 @@ import { AdminGuard } from '@services/guards/admin.guard';
 import { DashboardComponent } from '@pages/dashboard/dashboard.component';
 import { BusquedaComponent } from '@pages/busqueda/busqueda.component';
 import { MantenimientoUsuariosComponent } from '@pages/mantenimiento-usuarios/mantenimiento-usuarios.component';
-import { PerfilComponent } from '@pages/perfil/perfil.component';
+import { ServiciosComponent } from '@pages/servicios/servicios.component';
+import { ClientesComponent } from '@pages/clientes/clientes.component';
+import { EspeciesComponent } from '@pages/especies/especies.component';
+import { RazaComponent } from './raza/raza.component';
+import { PersonalComponent } from './personal/personal.component';
 
 
 const routes: Routes = [
@@ -20,8 +24,12 @@ const routes: Routes = [
     canActivate: [VerificaTokenGuard],
     data: { titulo: 'Dashboard'}
   },
+  { path: 'services', component: ServiciosComponent, data: { titulo: 'Servicios'} },
+  { path: 'clients', component: ClientesComponent, data: { titulo: 'Clientes'} },
+  { path: 'species', component: EspeciesComponent, data: { titulo: 'Especies'} },
+  { path: 'races', component: RazaComponent, data: { titulo: 'Razas'} },
+  { path: 'personal', component: PersonalComponent, data: { titulo: 'Personal'} },
   { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador'} },
-  { path: 'profile', component: PerfilComponent, data: { titulo: 'Perfil'} },
   // mantenimiento
   {
     path: 'users-setting',

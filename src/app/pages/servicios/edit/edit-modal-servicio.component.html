@@ -1,0 +1,21 @@
+<mat-card-header class="header">
+    <mat-card-title class="header">Actualizar </mat-card-title><br>
+    <mat-card-subtitle class="header"> Servicio</mat-card-subtitle>
+</mat-card-header>
+
+<form [formGroup]="forma" (ngSubmit)="actualizarServicio()" fxLayout.xs="row wrap" fxLayout="column">
+
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input formControlName="nombre" class="form-control" matInput placeholder="Ingrese Nombre">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Descripcion</mat-label>
+        <input formControlName="descripcion" class="form-control" matInput placeholder="Ingrese Descripcion">
+    </mat-form-field>
+
+    <div>
+        <button type="submit" class="btn" mat-dialog-close mat-raised-button color="primary"><mat-icon>save</mat-icon> Actualizar</button>
+    </div>
+</form>

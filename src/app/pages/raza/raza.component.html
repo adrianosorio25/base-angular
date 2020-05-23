@@ -1,0 +1,56 @@
+<mat-form-field style="width: 50%">
+    <mat-label>
+        <mat-icon style="width: 25px;">search</mat-icon>Buscar Razas</mat-label>
+    <input matInput #input (keyup)="buscarRaza(input.value)" #target>
+</mat-form-field>
+
+<button (click)="addRaza()" style="float: right;" mat-fab color="warn">
+    <mat-icon>add</mat-icon>
+</button>
+<br><br>
+
+<div class="mat-elevation-z8">
+    <table mat-table #table [dataSource]="razas">
+
+        <!-- Nombre Column -->
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef width="50%"> Nombre </th>
+            <td mat-cell *matCellDef="let raza"><strong> {{raza.nombre | uppercase}} </strong></td>
+        </ng-container>
+
+        <!-- Especie Column -->
+        <ng-container matColumnDef="especie">
+            <th mat-header-cell *matHeaderCellDef width="50%"> Especie </th>
+            <td mat-cell *matCellDef="let raza">{{raza.especie.especie | uppercase}}</td>
+        </ng-container>
+
+        <!-- Icono1 Column -->
+        <ng-container matColumnDef="icono1">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let raza">
+                <mat-icon color="accent" style="padding-left: 5px;" (click)="editRaza(raza._id)">edit</mat-icon>
+            </td>
+        </ng-container>
+
+        <!-- Icono2 Column -->
+        <ng-container matColumnDef="icono2">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let raza">
+                <mat-icon color="warn" style="padding-left: 5px;" (click)="borrarRaza(raza)">delete_outline</mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let especies; columns: displayedColumns;">
+        </tr>
+    </table>
+
+    <div class="paginator">
+        <mat-icon (click)="cambiarDesde(+7)" class="iconRight">keyboard_arrow_right</mat-icon>
+        <mat-icon (click)="cambiarDesde(-7)" class="icon">keyboard_arrow_left</mat-icon>
+        <div class="text">
+            {{desde + 1}} - {{razas.length + desde}} de {{totalRegistros}}
+        </div>
+    </div>
+
+</div>

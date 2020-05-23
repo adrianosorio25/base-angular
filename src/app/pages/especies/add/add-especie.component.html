@@ -1,0 +1,20 @@
+<mat-card-header class="header">
+    <mat-card-title class="header">Crear </mat-card-title><br>
+    <mat-card-subtitle class="header"> Especie</mat-card-subtitle>
+</mat-card-header>
+
+<form [formGroup]="forma" (ngSubmit)="registrarEspecie()" fxLayout.xs="row wrap" fxLayout="column">
+
+    <mat-form-field>
+        <mat-label>Especie</mat-label>
+        <input formControlName="especie" name="especie" matInput placeholder="Ingrese Especie">
+        <mat-error *ngIf="!this.forma.hasError('required')">
+            Por favor ingrese una especie
+        </mat-error>
+    </mat-form-field>
+
+    <div>
+        <button [disabled]="forma.invalid" type="submit" class="btn" mat-dialog-close mat-raised-button color="primary" button color="primary"><mat-icon>save</mat-icon> Guardar</button>
+    </div>
+    <br>
+</form>

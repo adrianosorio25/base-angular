@@ -3,6 +3,7 @@ import { Usuario } from '@app/models/usuario.model';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '@app/config/config';
+import { Servicio } from '@app/models/servicios.model';
 
 @Component({
   selector: 'app-busqueda',
@@ -16,7 +17,7 @@ export class BusquedaComponent implements OnInit {
   displayedColumnsService: string[] = ['nombre', 'descripcion', 'edit'];
 
   usuarios: Usuario[] = [];
-  // servicios: Servicio[] = [];
+  servicios: Servicio[] = [];
 
   constructor(private activateRoute: ActivatedRoute, private http: HttpClient) {
     activateRoute.params
@@ -37,7 +38,7 @@ export class BusquedaComponent implements OnInit {
     this.http.get(url)
         .subscribe( (resp: any) => {
           this.usuarios = resp.usuarios;
-          // this.servicios = resp.servicios;
+          this.servicios = resp.servicios;
         });
   }
 

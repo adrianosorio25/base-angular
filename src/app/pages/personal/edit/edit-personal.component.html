@@ -1,0 +1,36 @@
+<mat-card-header class="header">
+    <mat-card-title class="header">Actualizar </mat-card-title><br>
+    <mat-card-subtitle class="header"> Raza</mat-card-subtitle>
+</mat-card-header>
+
+<form [formGroup]="forma" (ngSubmit)="actualizarPersonal()" fxLayout.xs="row wrap" fxLayout="column">
+
+    <mat-form-field>
+        <mat-label>Nombres</mat-label>
+        <input formControlName="nombres" class="form-control" matInput placeholder="Ingrese Nombres">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Apellidos</mat-label>
+        <input formControlName="apellidos" class="form-control" matInput placeholder="Ingrese Apellidos">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Identificacion</mat-label>
+        <input formControlName="identificacion" class="form-control" matInput placeholder="Ingrese Identificacion">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Cargo</mat-label>
+        <input formControlName="cargo" class="form-control" matInput placeholder="Ingrese Cargo">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Especialidad</mat-label>
+        <input formControlName="especialidad" class="form-control" matInput placeholder="Ingrese Especialidad">
+    </mat-form-field>
+
+    <div>
+        <button [disabled]="forma.invalid" type="submit" class="btn" mat-dialog-close mat-raised-button color="primary"><mat-icon>save</mat-icon> Actualizar</button>
+    </div>
+</form>
